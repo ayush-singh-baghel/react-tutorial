@@ -1,42 +1,17 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from 'react';
 
-export default function UseMemo() {
-  const [count, setCount] = useState(0);
-  const [number, setNumber] = useState(4);
+export default function UseMemo({ marks, subject }) {
+  console.log("Component Rendered!"); // This logs every render
 
-  const doubleValue = useMemo(() => {
-    console.log("Computing double value...");
-    for (let i = 0; i <= 10000000; i++) { }
-    return number * 2;
-  }, [number]);
+  const percentageMarks = useMemo(() => {
+    console.log("inside the memo"); // Only logs when `marks` changes
+    return (marks * 100) / 100;
+  }, [marks]);
 
   return (
-    <div className="flex justify-center items-center mt-[10%]">
-      <div className="bg-white shadow-lg rounded-2xl p-6 w-80 text-center">
-        <h1 className="text-xl font-semibold mb-4 text-gray-800">
-          useMemo in React JS
-        </h1>
-
-        <p className="text-gray-600 mb-2">Count: {count}</p>
-        <button
-          onClick={() => setCount(count + 1)}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
-        >
-          Increment Count
-        </button>
-
-        <div className="mt-4">
-          <input
-            type="number"
-            value={number}
-            onChange={(e) => setNumber(parseInt(e.target.value))}
-            className="w-full p-2 border rounded-lg text-center mb-2"
-          />
-          <div className="p-3 bg-gray-200 rounded-lg">
-            <p className="text-gray-700 font-medium">Double: {doubleValue}</p>
-          </div>
-        </div>
-      </div>
+    <div className='flex flex-col text-center mt-7'>
+      <p>Subject : {subject}</p>
+      <p>Your percentage is : {percentageMarks}%</p>
     </div>
   );
 }

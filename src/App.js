@@ -1,10 +1,10 @@
 import './App.css';
-import Login from './form/Login';
+import MemoParent from './useMemo/MemoParent';
 
 function App() {
   return (
     <div className="App">
-      <Login/>
+     <MemoParent/>
     </div>
   );
 }
